@@ -17,10 +17,11 @@ function App() {
 				<p>University of Carthage, Tunis' Advanced Business Studies School</p>
 				<p>Web Full Stack & Software developer, graphic designer, motorsports fan and hiker.</p>
 				<p>New website in the works!</p>
-				{/* Icons here */}
-				<FontAwesomeIcon icon={faCodepen} />
-				<FontAwesomeIcon icon={faGithubSquare} />
-				<FontAwesomeIcon icon={faEnvelope} />
+				<footer style={{fontSize: '20px'}}>
+					<a href="https://codepen.io/brinim"><FontAwesomeIcon icon={faCodepen} /></a>
+					<a href="https://github.com/BriniM"><FontAwesomeIcon icon={faGithubSquare} /></a>
+					<a href="mailto:maherbrini00@gmail.com"><FontAwesomeIcon icon={faEnvelope} /></a>
+				</footer>
 			</section>
 		</main>
 	);
