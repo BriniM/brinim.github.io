@@ -1,0 +1,14 @@
+@mixin centerByMargin($top: auto, $right: auto, $bottom: auto, $left: auto) {
+	margin-top: $top;
+	margin-right: $right;
+	margin-bottom: $bottom;
+	margin-left: $left;
+}
+
+@mixin flex($wrap: nowrap, $mainAxis: flex-start, $crossAxis: flex-start, $direction: row) {
+	display: flex;
+	flex-wrap: $wrap;
+	justify-content: $mainAxis;
+	align-items: $crossAxis;
+	flex-direction: $direction;
+}

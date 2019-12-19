@@ -1,0 +1,15 @@
+@import-normalize;
+@import './variables';
+@import './mixins';
+
+body {
+	margin: 0;
+}
+
+#root {
+	@include flex($mainAxis: center, $crossAxis: center);
+	background-image: $bg-gradient;
+	min-height: $page-height;
+	min-width: $page-width;
+	font-family: $font;
+}
