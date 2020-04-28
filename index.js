@@ -28,13 +28,10 @@ app.use(webhookHandler); // use GithubWebHook's middleware.
 app.use(express.static(path.join(__dirname, 'build'))); // Serve files in the build directory.
 
 webhookHandler.on('push', function () { // On repo push: Update and rebuild.
-	exec(`cd ${REPO_PATH} && git pull && npm run-script build`, (err, stdout, stderr) => {
+	exec(`cd ${REPO_PATH} && git pull && npm install && npm run build`, (err, stdout, stderr) => {
 		if (err) console.error(err);
 		if (stdout) console.log(stdout);
 		if (stderr) console.error(stderr);
-		// TODO: Verify if index.js file was changed
-		// If that's the case: the server has to be restarted
-		// Otherwise I could just use Nodemon to start the server.
 	});
 });
 
