@@ -27,12 +27,14 @@ app.use(bodyParser.json()); // must use bodyParser in express.
 app.use(webhookHandler); // use GithubWebHook's middleware.
 app.use(express.static(path.join(__dirname, 'build'))); // Serve files in the build directory.
 
-webhookHandler.on('push', function () { // On repo push: Update and rebuild.
-	exec(`cd ${REPO_PATH} && git pull && npm install && npm run build`, (err, stdout, stderr) => {
-		if (err) console.error(err);
-		if (stdout) console.log(stdout);
-		if (stderr) console.error(stderr);
-	});
+webhookHandler.on('push', function (repo, data) { // On repo push: Update and rebuild.
+	if (data.ref === "refs/heads/dev") {
+		exec(`cd ${REPO_PATH} && git pull && npm install && npm run build`, (err, stdout, stderr) => {
+			if (err) console.error(err);
+			if (stdout) console.log(stdout);
+			if (stderr) console.error(stderr);
+		});
+	}
 });
 
 // app.get('/dev/' ...);
