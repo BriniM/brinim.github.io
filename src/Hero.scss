@@ -1,0 +1,70 @@
+@import './misc.scss';
+
+$bg-primary: #282c34;
+
+.Hero {
+  @include grid-container(12, 7, 20px);
+  background-color: $bg-primary;
+  min-height: 100vh;
+  color: white;
+  text-align: left;
+}
+
+.responsiveImg {
+  max-width: 100%;
+  height: auto;
+}
+
+header {
+  @include grid-item($col-start, $col-end, 1, 2);
+}
+
+nav {
+  display: grid;
+  grid: auto-flow / 2fr 6fr;
+}
+
+nav > ul {
+  @include flex($mainAxis: space-around, $crossAxis: center);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  @include grid-item($col-start, $col-end, 2, 7);
+  @include grid-container(8, 5, 20px)
+}
+
+main > div {
+  @include grid-item(1, 5, 2, 6);
+}
+
+main > img {
+  @include grid-item(5, 9, 1, 6);
+}
+
+main > div > button {
+  width: 250px;
+  height: 60px;
+  color: white;
+  border-color: transparent;
+  border-radius: 8px;
+  font-weight: bold;
+  
+  background-color: lighten($bg-primary, 7%);
+  box-shadow: 0 6px darken($bg-primary, 1.5%);
+  
+  text-transform: uppercase;
+  transition: .5s ease-in-out;
+}
+
+main > div > button:hover {
+  background-color: lighten($bg-primary, 14%);
+  cursor: pointer;
+}
