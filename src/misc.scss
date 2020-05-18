@@ -1,24 +1,40 @@
+/* Hero column start and end lines */
 $col-start: 3;
 $col-end: 11;
 
 @mixin flex($wrap: nowrap, $mainAxis: flex-start, $crossAxis: flex-start, $direction: row) {
-	display: flex;
-	flex-wrap: $wrap;
-	justify-content: $mainAxis;
-	align-items: $crossAxis;
-	flex-direction: $direction;
+    display: flex;
+    flex-wrap: $wrap;
+    justify-content: $mainAxis;
+    align-items: $crossAxis;
+    flex-direction: $direction;
 }
 
-@mixin grid-container($nbColumns, $nbRows, $gap) {
+@mixin grid-container($nbColumns: false, $nbRows: false, $gap: false) {
     display: grid;
-    grid-template-rows: repeat($nbRows, 1fr);
-    grid-template-columns: repeat($nbColumns, 1fr);
-    gap: $gap;
+    @if $nbRows {
+        grid-template-rows: repeat($nbRows, 1fr);
+    }
+    @if $nbColumns {
+        grid-template-columns: repeat($nbColumns, 1fr);
+    }
+    @if $gap {
+        gap: $gap;
+    }
 }
 
-@mixin grid-item($column-start: auto, $column-end: auto, $row-start: auto, $row-end: auto) {
+@mixin grid-item($column-start: false, $column-end: false, $row-start: false, $row-end: false) {
+    @if $column-start {
     grid-column-start: $column-start;
+    }
+    @if $column-end {
     grid-column-end: $column-end;
+    }
+    @if $row-start {
     grid-row-start: $row-start;
-    grid-row-end: $row-end;
+    }
+    @if $row-end
+    {
+        grid-row-end: $row-end;
+    }
 }

@@ -10,6 +10,10 @@ $bg-primary: #282c34;
   text-align: left;
 }
 
+.Hero > * {
+  animation: fadeIn .5s;
+}
+
 .responsiveImg {
   max-width: 100%;
   height: auto;
@@ -20,12 +24,103 @@ header {
 }
 
 nav {
-  display: grid;
-  grid: auto-flow / 2fr 6fr;
+  @include grid-container(8);
+}
+
+header .menu-icon {
+  cursor: pointer;
+  display: none;
+  justify-self: end;
+  align-self: center;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.menu-icon .navicon:before,
+.menu-icon .navicon:after {
+  background: white;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.menu-icon .navicon:before {
+  top: 5px;
+}
+
+.menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+.menu-btn {
+  display: none;
+}
+
+.menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+header .menu-btn:checked ~ ul {
+  display: flex;
+}
+
+header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 nav > ul {
-  @include flex($mainAxis: space-around, $crossAxis: center);
+  @include grid-item(3, 9);
+  @include flex($mainAxis: space-around, $crossAxis: center, $wrap: wrap);
+  animation: fadeIn .5s;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -47,6 +142,7 @@ main > div {
 
 main > img {
   @include grid-item(5, 9, 1, 6);
+  align-self: center;
 }
 
 main > div > button {
@@ -67,4 +163,54 @@ main > div > button {
 main > div > button:hover {
   background-color: lighten($bg-primary, 14%);
   cursor: pointer;
+}
+
+@media only screen and (max-width: 950px) {
+  .Hero {
+    grid-auto-flow: dense;
+    grid-template-rows: auto;
+  }
+  header .menu-icon {
+    display: block;
+  }
+
+  nav > img {
+    @include grid-item(1, 6);
+    max-width: 100%;
+    height: auto;
+  }
+  nav > ul {
+    display: none;
+    flex-direction: column;
+  }
+
+  nav > .menu-icon {
+    @include grid-item(6, 9);
+  }
+
+  nav > ul {
+    @include grid-item(1, 9);
+    margin-top: 16px;
+  }
+  nav > ul > li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .Hero > main {
+    grid-template-rows: auto;
+    margin-bottom: 32px;
+  }
+  
+  .Hero > main > div {
+    @include grid-item(1, 9, auto, auto);
+  }
+  .Hero > main > img {
+    @include grid-item(1, 9, auto, auto);
+    grid-row: 1;
+  }
+
+  main > div > button {
+    width: 100%;
+  }
 }

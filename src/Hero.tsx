@@ -26,6 +26,8 @@ export function Navigation({ logo, menu, logoAlt }: Header) {
 		<header>
 			<nav>
 				<img src={logo} alt={logoAlt} />
+				<input className="menu-btn" type="checkbox" id="menu-btn" />
+				<label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
 				<ul>
 					{
 						menu.map(elem => <li key={elem.menuItem}><a href={elem.link}>{elem.menuItem}</a></li>)
