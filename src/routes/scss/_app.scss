@@ -1,12 +1,12 @@
-@import './mixins';
-@import './variables';
+@import "./mixins";
+@import "./variables";
 
 .main {
 	@include flex($mainAxis: center, $crossAxis: center);
-  background-color: white;
-  min-height: $main-height;
+	background-color: white;
+	min-height: $main-height;
 	width: $main-width;
-  border-radius: $main-border-radius;
+	border-radius: $main-border-radius;
 	overflow-y: auto;
 }
 
@@ -55,5 +55,5 @@ footer > a {
 }
 
 a:hover {
-	color: lighten($anchor-color, 30%)
+	color: lighten($anchor-color, 30%);
 }

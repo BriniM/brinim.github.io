@@ -1,9 +1,8 @@
 var express = require('express'),
-	bodyParser = require('bodyparser'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-local'),
 	User = require('./db'),
-	router = express.Router;
+	router = express.Router();
 
 passport.use(new LocalStrategy((username, password, done) => {
 	User.findOne({ username: username }, async (err, user) => {
@@ -30,9 +29,6 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
-
 router.use(function useHttps(req, res, next) {
 	if (req.secure) {
 		// request was via https, so do no special handling
@@ -42,6 +38,8 @@ router.use(function useHttps(req, res, next) {
 		res.redirect('https://' + req.headers.host + req.url);
 	}
 });
+
+router.use(require('body-parser').urlencoded({ extended: true }));
 
 router.use(passport.initialize());
 router.use(passport.session());

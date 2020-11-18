@@ -11,8 +11,8 @@ function App() {
 			<Suspense fallback={<div>Loading...</div>}>
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route path='/fb/recentactivity/' component={Users} />
-					<Route path='/fb/recentactivity/login/' component={Login} />
+					<Route exact path='/fb/recentactivity/' component={Users} />
+					<Route exact path='/fb/recentactivity/login/' component={Login} />
 				</Switch>
 			</Suspense>
 		</BrowserRouter>

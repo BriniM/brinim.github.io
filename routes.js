@@ -1,6 +1,6 @@
 var express = require('express'),
 	path = require('path'),
-	router = express.Router;
+	router = express.Router();
 
 const BIGDATA_BRANCH_PATH = '/home/maher/bigdata';
 
