@@ -46,7 +46,7 @@ router.use(function useHttps(req, res, next) {
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.post('/fb/login', passport.authenticate('local', {
+router.post('/fb/recentactivity/login', passport.authenticate('local', {
 	failureRedirect: '/login',
 	successRedirect: '/profile'
 }));
