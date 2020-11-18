@@ -4,10 +4,6 @@ var express = require('express'),
 
 const BIGDATA_BRANCH_PATH = '/home/maher/bigdata';
 
-router.use('/fb/recentactivity/', function (req, res, next) {
-	req.isAuthenticated() ? next() : res.redirect('/fb/recentactivity/login');
-});
-
 // Serve files of bigdata's project
 router.use('/dev/bigdata/', express.static(path.join(BIGDATA_BRANCH_PATH, 'build')));
 // Serve files in the build directory of the main router

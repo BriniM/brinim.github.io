@@ -1,0 +1,13 @@
+.footer {
+	margin-top: 8px;
+	width: 120px;
+}
+
+.footer > a {
+	color: #252525;
+	transition: .5s ease-in-out;
+}
+
+.footer > a:hover {
+	color: lighten(#252525, 30%);
+}

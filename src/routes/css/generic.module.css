@@ -1,0 +1,25 @@
+.flexCenter {
+	justify-content: center;
+	align-items: center;
+}
+
+.flexColumn {
+	flex-direction: column;
+}
+
+.flexMainSpaceBetween {
+	justify-content: space-between;
+}
+
+.flexWrap {
+	flex-wrap: wrap;
+}
+
+.flex {
+	display: flex;
+}
+
+.centerH {
+	margin-right: auto;
+	margin-left: auto;
+}
