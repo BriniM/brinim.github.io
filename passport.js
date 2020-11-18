@@ -45,8 +45,8 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.post('/fb/recentactivity/login', passport.authenticate('local', {
-	failureRedirect: '/login',
-	successRedirect: '/profile'
+	failureRedirect: '/fb/recentactivity/login',
+	successRedirect: '/fb/recentactivity/'
 }));
 
 module.exports = router;
