@@ -1,14 +1,13 @@
-// Sys Lib.
-const path = require('path');
-const fs = require('fs');
+require('dotenv').config();
 
-// Express, HTTP(s) Lib.
-const http = require('http');
-const https = require('https');
-const express = require('express');
-const app = express();
-
-const BIGDATA_BRANCH_PATH = '/root/bigdata';
+var fs = require('fs'),
+	http = require('http'),
+	https = require('https'),
+	express = require('express'),
+	session = require('express-session'),
+	passportRoutes = require('./passport'),
+	regularRoutes = require('./routes'),
+	app = express();
 
 // SSL Files.
 const credentials = {
@@ -17,16 +16,15 @@ const credentials = {
 	ca: fs.readFileSync('/etc/letsencrypt/live/maherbrini.tk/chain.pem', 'utf8')
 };
 
-app.use('/dev/bigdata/', express.static(path.join(BIGDATA_BRANCH_PATH, 'build'))); // Serve files of bigdata's project
-app.use('/', express.static(path.join(__dirname, 'build'))); // Serve files in the build directory of the main app
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false,
+	cookie: { secure: true }
+}));
 
-app.get('/dev/bigdata/*', function(req, res) {
-	res.sendFile(path.join('build', 'index.html'));
-});
-
-app.get('/*', function(req, res) {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+app.use(passportRoutes);
+app.use(regularRoutes);
 
 http.createServer(app).listen(80);
 https.createServer(credentials, app).listen(443);
