@@ -1,5 +1,9 @@
 import React from 'react';
+import Whitewrapper from './components/Whitewrapper';
 
 export default function Users() {
-	return (<h1>this is users</h1>);
+	return (
+		<Whitewrapper>
+			<h1>This is the users page</h1>
+		</Whitewrapper>);
 }

@@ -1,0 +1,8 @@
+.loginForm > * {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.loginForm > button {
+    height: 32px;
+}

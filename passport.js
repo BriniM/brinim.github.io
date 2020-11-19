@@ -46,12 +46,16 @@ router.use(require('body-parser').urlencoded({ extended: true }));
 router.use(passport.initialize());
 router.use(passport.session());
 
-// router.use('/fb/recentactivity/', function (req, res, next) {
-// 	if(req.isAuthenticated())
-// 		next();
-// 	else
-// 		return res.redirect('/fb/recentactivity/login');
-// });
+router.all('/fb/recentactivity/', function (req, res, next) {
+	if(req.isAuthenticated())
+	{
+		next();
+	}
+	else
+	{
+		return res.redirect('/fb/recentactivity/login');
+	}
+});
 
 router.post('/fb/recentactivity/login', passport.authenticate('local', {
 	failureRedirect: '/fb/recentactivity/login',

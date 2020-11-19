@@ -8,14 +8,11 @@ import { faGithubSquare, faCodepen } from '@fortawesome/free-brands-svg-icons';
 
 import Whitewrapper from './components/Whitewrapper';
 
-import globalStyles from './css/generic.module.css';
-import homeStyles from './css/home.module.css';
-import footerStyles from './css/footer.module.css';
+import {centerH, flex, flexWrap, flexMainSpaceBetween} from './css/generic.module.css';
+import {face} from './css/home.module.css';
+import {footer} from './css/footer.module.css';
 
 function Home() {
-	const {centerH, flex, flexWrap, flexMainSpaceBetween} = globalStyles;
-	const {face} = homeStyles;
-	const {footer} = footerStyles;
 	return (
 		<Whitewrapper>
 			<img className={`${centerH} ${face}`} src={img} alt="Maher Brini" />
